@@ -1,109 +1,296 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>عرض: الفساد الأخلاقي — MoralIntegrityHub.com</title>
 
-export default function PowerPresentation() {
-  const slides = [
-    {
-      id: 1,
-      title: 'الفساد الأخلاقي',
-      subtitle: 'مقدمة عامة',
-      text: 'يواجهنا العديد من المشكلات في الحياة الاجتماعية والعملية بشكل يومي، مما يثير الريبة والتفكك بين كل الأشياء والمجالات. ولكن لم نُفكر بعمق في أسباب تلك المشكلات، ومن أبرزها الفساد الأخلاقي.'
-    },
-    {
-      id: 2,
-      title: 'مفهوم الفساد الأخلاقي',
-      subtitle: 'تعريف وتوضيح',
-      text: 'هو انحراف الفرد أو المجتمع عن القيم والمبادئ الأخلاقية، وعدم الالتزام بما يُعتبر سلوكًا صحيحًا وفقًا للمعايير الدينية والاجتماعية والقانونية، مما يؤدي إلى انتشار السلوكيات السلبية التي تضعف الضمير وتهدد استقرار المجتمع.'
-    },
-    {
-      id: 3,
-      title: 'جوانب الفساد الأخلاقي',
-      subtitle: 'أنواع متعددة للفساد',
-      text: '1- الفساد السلوكي: الكذب، الغش، الخداع، الخيانة، النفاق.
-2- الفساد الاجتماعي: ضعف الروابط الأسرية، انعدام التكافل.
-3- الفساد الاقتصادي: الرشوة، التلاعب بالأموال، الغش التجاري.
-4- الفساد الإداري والسياسي: المحسوبية، تزوير الانتخابات.
-5- الفساد الشخصي والثقافي والإعلامي والإنساني.'
-    },
-    {
-      id: 4,
-      title: 'أسباب الفساد الأخلاقي',
-      subtitle: 'جذور الانحراف الأخلاقي',
-      text: '1- ضعف الوازع الديني.
-2- التأثر بالثقافات الدخيلة.
-3- سوء التربية وضعف دور الأسرة.
-4- الظروف الاقتصادية الصعبة.
-5- غياب القدوة الحسنة.
-6- الانفتاح غير المنضبط على مواقع التواصل.'
-    },
-    {
-      id: 5,
-      title: 'آثار الفساد الأخلاقي',
-      subtitle: 'على الفرد والأسرة والمجتمع',
-      text: 'على الفرد: فقدان الثقة بالنفس، تدهور السمعة، العزلة.
-على الأسرة: انهيار العلاقات، فقدان القدوة، ضعف الترابط.
-على المجتمع: انتشار الفوضى، ضعف الإنتاجية، انهيار الاقتصاد.'
-    },
-    {
-      id: 6,
-      title: 'دور التعليم والدين',
-      subtitle: 'في مكافحة الفساد',
-      text: 'دور التعليم: غرس القيم منذ الصغر، تشجيع الصدق والعدل، إعداد المعلمين كقدوة.
-دور الدين: تعزيز المراقبة الذاتية، نشر التسامح، الدعوة إلى الأمانة، إحياء الضمير الإنساني.'
-    },
-    {
-      id: 7,
-      title: 'دور القوانين والتشريعات',
-      subtitle: 'الردع والعدالة',
-      text: '1- وضع عقوبات رادعة ضد السلوك غير الأخلاقي.
-2- ضمان المساواة أمام القانون.
-3- حماية الحقوق الفردية.
-4- تطبيق الشفافية في جميع المجالات.'
-    },
-    {
-      id: 8,
-      title: 'أمثلة واقعية وحلول',
-      subtitle: 'نحو الإصلاح الأخلاقي',
-      text: 'أمثلة: الغش في الامتحانات، الرشوة، استغلال النفوذ، نشر الأكاذيب.
-الحلول: تعزيز التربية الأخلاقية، نشر الوعي عبر الإعلام، دعم الإيجابية، تطبيق القوانين الصارمة.'
-    },
-    {
-      id: 9,
-      title: 'خارطة الطريق نحو مجتمع أفضل',
-      subtitle: 'نهاية العرض ودعوة للتفاعل',
-      text: '1- نشر الثقافة الأخلاقية.
-2- دعم أدوار الأسرة والتعليم.
-3- تطبيق العدالة والشفافية.
-4- التقييم المستمر لقياس التطور الأخلاقي.'
+  <!-- Arabic font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #0f1724;
+      --bg2: #0b1020;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #6366f1;
     }
-  ];
 
-  const [index, setIndex] = useState(0);
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Noto Naskh Arabic", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #0b1220 0%, #071020 50%, #000 100%);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      direction: rtl;
+      -webkit-text-size-adjust: 100%;
+    }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center p-6">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={slides[index].id}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl w-full bg-gray-950 rounded-2xl shadow-2xl overflow-hidden border border-gray-700 p-8"
-        >
-          <div>
-            <h1 className="text-3xl font-bold mb-2 text-indigo-400 text-center">{slides[index].title}</h1>
-            <h2 className="text-lg text-gray-300 mb-4 text-center">{slides[index].subtitle}</h2>
-            <p className="text-gray-400 leading-relaxed whitespace-pre-line text-right">{slides[index].text}</p>
-          </div>
-          <div className="flex justify-between mt-6">
-            <button onClick={() => setIndex((index - 1 + slides.length) % slides.length)} className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-indigo-600 transition">السابق</button>
-            <div className="text-sm text-gray-500 self-center">صفحة {index + 1} / {slides.length}</div>
-            <button onClick={() => setIndex((index + 1) % slides.length)} className="px-4 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-400 transition">التالي</button>
-          </div>
-          <div className="text-center text-gray-500 text-sm mt-6">Copyright © 2025 Zeyad El-Bahrawy | Website: MoralIntegrityHub.com</div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-}
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      box-sizing:border-box;
+    }
+
+    .card{
+      width:100%;
+      max-width:980px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      padding:28px;
+      border-radius:20px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.7);
+      backdrop-filter: blur(6px);
+      box-sizing:border-box;
+    }
+
+    h1{
+      margin:0 0 6px 0;
+      font-size:30px;
+      color:var(--accent);
+      text-align:center;
+      line-height:1.15;
+    }
+    h2{
+      margin:0 0 14px 0;
+      font-size:16px;
+      color:#c8d0df;
+      text-align:center;
+      font-weight:400;
+    }
+
+    .slide-area{
+      padding:12px 8px;
+      color:#d7dee8;
+      font-size:18px;
+      line-height:1.9;
+      text-align:right;
+      white-space:pre-line;
+      min-height:220px;
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      will-change: opacity, transform;
+    }
+
+    .controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.03);
+      color:#fff;
+      cursor:pointer;
+      transition: background .18s ease, transform .08s ease;
+      user-select:none;
+    }
+
+    .btn:hover{ transform:translateY(-2px); background:linear-gradient(90deg, rgba(99,102,241,0.13), rgba(99,102,241,0.06)); }
+    .btn:active{ transform:translateY(0); }
+
+    .btn.primary{
+      background: linear-gradient(90deg, rgba(99,102,241,1), rgba(99,102,241,0.85));
+      color:#fff;
+      border: none;
+    }
+
+    .meta{
+      text-align:center;
+      margin-top:16px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .pager{
+      color:#b9c6d6;
+      font-size:14px;
+    }
+
+    /* fade helpers */
+    .fade-out{
+      opacity:0;
+      transform:translateY(-18px);
+      pointer-events:none;
+    }
+    .fade-in{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* responsive */
+    @media (max-width:640px){
+      .card{ padding:18px; border-radius:14px; }
+      h1{ font-size:22px; }
+      .slide-area{ font-size:16px; min-height:180px; }
+      .btn{ padding:9px 12px; font-size:14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="title">
+      <h1 id="title">الفساد الأخلاقي</h1>
+      <h2 id="subtitle">مقدمة عامة</h2>
+
+      <section id="slide" class="slide-area fade-in" aria-live="polite">
+        <!-- محتوى الشريحة سيُملأ عبر جافاسكربت -->
+      </section>
+
+      <div class="controls" aria-hidden="false">
+        <button id="prevBtn" class="btn" title="السابق">السابق</button>
+        <div class="pager" id="pager">صفحة 1 / 9</div>
+        <button id="nextBtn" class="btn primary" title="التالي">التالي</button>
+      </div>
+
+      <div class="meta">Copyright © 2025 Zeyad El-Bahrawy | Website: MoralIntegrityHub.com</div>
+    </main>
+  </div>
+
+  <script>
+    // بيانات الشرائح (مأخوذة من مكوّن React الأصلي، محوّلة إلى مصفوفة للاستخدام في صفحة HTML ثابتة)
+    const slides = [
+      {
+        id: 1,
+        title: 'الفساد الأخلاقي',
+        subtitle: 'مقدمة عامة',
+        text: 'يواجهنا العديد من المشكلات في الحياة الاجتماعية والعملية بشكل يومي، مما يثير الريبة والتفكك بين أفراد المجتمع ويؤثر في القيم والمبادئ المشتركة. هذا العرض يهدف إلى توضيح مفهوم الفساد الأخلاقي، أسبابه، آثاره، وأدوات المواجهة الممكنة.'
+      },
+      {
+        id: 2,
+        title: 'مفهوم الفساد الأخلاقي',
+        subtitle: 'تعريف وتوضيح',
+        text: 'هو انحراف الفرد أو المجتمع عن القيم والمبادئ الأخلاقية، وعدم الالتزام بما يُعتبر سلوكًا صحيحًا حسب الأعراف والدين والضمير. يظهر الفساد الأخلاقي في سلوكيات مثل الكذب، الغش، استغلال الناس، والانحراف عن الواجبات الاجتماعية.'
+      },
+      {
+        id: 3,
+        title: 'جوانب الفساد الأخلاقي',
+        subtitle: 'أنواع متعددة للفساد',
+        text: '1- الفساد السلوكي: الكذب، الغش، الخداع، الخيانة، النفاق.\n2- الفساد الاجتماعي: ضعف الروابط الأسرية، انعدام التكافل.\n3- الفساد الاقتصادي: الرشوة، التلاعب بالأموال، الغش التجاري.\n4- الفساد الإداري والسياسي: المحسوبية، تزوير الانتخابات.\n5- الفساد الشخصي والثقافي والإعلامي والإنساني.'
+      },
+      {
+        id: 4,
+        title: 'أسباب الفساد الأخلاقي',
+        subtitle: 'جذور الانحراف الأخلاقي',
+        text: '1- ضعف الوازع الديني.\n2- التأثر بالثقافات الدخيلة.\n3- سوء التربية وضعف دور الأسرة.\n4- الظروف الاقتصادية الصعبة.\n5- غياب القدوة الحسنة.\n6- الانفتاح غير المنضبط على مواقع التواصل.'
+      },
+      {
+        id: 5,
+        title: 'آثار الفساد الأخلاقي',
+        subtitle: 'على الفرد والأسرة والمجتمع',
+        text: 'على الفرد: فقدان الثقة بالنفس، تدهور السمعة، العزلة.\nعلى الأسرة: انهيار العلاقات، فقدان القدوة، ضعف الترابط.\nعلى المجتمع: انتشار الفوضى، ضعف الإنتاجية، انهيار الثقة والاقتصاد.'
+      },
+      {
+        id: 6,
+        title: 'دور التعليم والدين',
+        subtitle: 'في مكافحة الفساد',
+        text: 'دور التعليم: غرس القيم منذ الصغر، تشجيع الصدق والعدل، إعداد المعلمين كقدوة.\nدور الدين: تعزيز المراقبة الذاتية، نشر التسامح، الدعوة إلى الأمانة، إحياء الضمير الإنساني.'
+      },
+      {
+        id: 7,
+        title: 'دور القوانين والتشريعات',
+        subtitle: 'الردع والعدالة',
+        text: '1- وضع عقوبات رادعة ضد السلوك غير الأخلاقي.\n2- ضمان المساواة أمام القانون.\n3- حماية الحقوق الفردية.\n4- تطبيق الشفافية في جميع المجالات.'
+      },
+      {
+        id: 8,
+        title: 'أمثلة واقعية وحلول',
+        subtitle: 'نحو الإصلاح الأخلاقي',
+        text: 'أمثلة: الغش في الامتحانات، الرشوة، استغلال النفوذ، نشر الأكاذيب.\nالحلول: تعزيز التربية الأخلاقية، نشر الوعي عبر الإعلام، دعم الإيجابية، تطبيق القوانين الصارمة.'
+      },
+      {
+        id: 9,
+        title: 'خارطة الطريق نحو مجتمع أفضل',
+        subtitle: 'نهاية العرض ودعوة للتفاعل',
+        text: '1- نشر الثقافة الأخلاقية.\n2- دعم أدوار الأسرة والتعليم.\n3- تطبيق العدالة والشفافية.\n4- التقييم المستمر لقياس التطور الأخلاقي.'
+      }
+    ];
+
+    // عناصر الـ DOM
+    const titleEl    = document.getElementById('title');
+    const subtitleEl = document.getElementById('subtitle');
+    const slideEl    = document.getElementById('slide');
+    const pagerEl    = document.getElementById('pager');
+    const prevBtn    = document.getElementById('prevBtn');
+    const nextBtn    = document.getElementById('nextBtn');
+
+    let index = 0;
+    let animating = false;
+
+    function renderSlide(i){
+      const s = slides[i];
+      titleEl.textContent = s.title;
+      subtitleEl.textContent = s.subtitle;
+      pagerEl.textContent = `صفحة ${i + 1} / ${slides.length}`;
+
+      // animate: fade out, change, fade in
+      if(animating) return;
+      animating = true;
+
+      slideEl.classList.remove('fade-in');
+      slideEl.classList.add('fade-out');
+
+      // wait for transition to finish (or safe timeout)
+      const onTransitionEnd = (ev) => {
+        // ensure we react only to opacity/transform transitions
+        if (ev.propertyName && ev.propertyName !== 'opacity' && ev.propertyName !== 'transform') return;
+        slideEl.removeEventListener('transitionend', onTransitionEnd);
+
+        // update content then fade in
+        slideEl.innerText = s.text;
+        requestAnimationFrame(() => {
+          slideEl.classList.remove('fade-out');
+          slideEl.classList.add('fade-in');
+
+          // finalizer after animation
+          setTimeout(() => { animating = false; }, 280);
+        });
+      };
+
+      slideEl.addEventListener('transitionend', onTransitionEnd);
+
+      // Fallback in case transitionend doesn't fire
+      setTimeout(() => {
+        if(slideEl.classList.contains('fade-out')){
+          slideEl.innerText = s.text;
+          slideEl.classList.remove('fade-out');
+          slideEl.classList.add('fade-in');
+          animating = false;
+        }
+      }, 600);
+    }
+
+    function goTo(newIndex){
+      index = (newIndex + slides.length) % slides.length;
+      renderSlide(index);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    // Keyboard navigation: ← and →, as well as PageUp/PageDown
+    window.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowLeft' || ev.key === 'PageUp') { ev.preventDefault(); goTo(index - 1); }
+      if (ev.key === 'ArrowRight' || ev.key === 'PageDown') { ev.preventDefault(); goTo(index + 1); }
+      if (ev.key === 'Home') { ev.preventDefault(); goTo(0); }
+      if (ev.key === 'End') { ev.preventDefault(); goTo(slides.length - 1); }
+    });
+
+    // Initialize
+    renderSlide(index);
+  </script>
+</body>
+</html>
