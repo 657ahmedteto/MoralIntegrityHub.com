@@ -1,0 +1,109 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export default function PowerPresentation() {
+  const slides = [
+    {
+      id: 1,
+      title: 'الفساد الأخلاقي',
+      subtitle: 'مقدمة عامة',
+      text: 'يواجهنا العديد من المشكلات في الحياة الاجتماعية والعملية بشكل يومي، مما يثير الريبة والتفكك بين كل الأشياء والمجالات. ولكن لم نُفكر بعمق في أسباب تلك المشكلات، ومن أبرزها الفساد الأخلاقي.'
+    },
+    {
+      id: 2,
+      title: 'مفهوم الفساد الأخلاقي',
+      subtitle: 'تعريف وتوضيح',
+      text: 'هو انحراف الفرد أو المجتمع عن القيم والمبادئ الأخلاقية، وعدم الالتزام بما يُعتبر سلوكًا صحيحًا وفقًا للمعايير الدينية والاجتماعية والقانونية، مما يؤدي إلى انتشار السلوكيات السلبية التي تضعف الضمير وتهدد استقرار المجتمع.'
+    },
+    {
+      id: 3,
+      title: 'جوانب الفساد الأخلاقي',
+      subtitle: 'أنواع متعددة للفساد',
+      text: '1- الفساد السلوكي: الكذب، الغش، الخداع، الخيانة، النفاق.
+2- الفساد الاجتماعي: ضعف الروابط الأسرية، انعدام التكافل.
+3- الفساد الاقتصادي: الرشوة، التلاعب بالأموال، الغش التجاري.
+4- الفساد الإداري والسياسي: المحسوبية، تزوير الانتخابات.
+5- الفساد الشخصي والثقافي والإعلامي والإنساني.'
+    },
+    {
+      id: 4,
+      title: 'أسباب الفساد الأخلاقي',
+      subtitle: 'جذور الانحراف الأخلاقي',
+      text: '1- ضعف الوازع الديني.
+2- التأثر بالثقافات الدخيلة.
+3- سوء التربية وضعف دور الأسرة.
+4- الظروف الاقتصادية الصعبة.
+5- غياب القدوة الحسنة.
+6- الانفتاح غير المنضبط على مواقع التواصل.'
+    },
+    {
+      id: 5,
+      title: 'آثار الفساد الأخلاقي',
+      subtitle: 'على الفرد والأسرة والمجتمع',
+      text: 'على الفرد: فقدان الثقة بالنفس، تدهور السمعة، العزلة.
+على الأسرة: انهيار العلاقات، فقدان القدوة، ضعف الترابط.
+على المجتمع: انتشار الفوضى، ضعف الإنتاجية، انهيار الاقتصاد.'
+    },
+    {
+      id: 6,
+      title: 'دور التعليم والدين',
+      subtitle: 'في مكافحة الفساد',
+      text: 'دور التعليم: غرس القيم منذ الصغر، تشجيع الصدق والعدل، إعداد المعلمين كقدوة.
+دور الدين: تعزيز المراقبة الذاتية، نشر التسامح، الدعوة إلى الأمانة، إحياء الضمير الإنساني.'
+    },
+    {
+      id: 7,
+      title: 'دور القوانين والتشريعات',
+      subtitle: 'الردع والعدالة',
+      text: '1- وضع عقوبات رادعة ضد السلوك غير الأخلاقي.
+2- ضمان المساواة أمام القانون.
+3- حماية الحقوق الفردية.
+4- تطبيق الشفافية في جميع المجالات.'
+    },
+    {
+      id: 8,
+      title: 'أمثلة واقعية وحلول',
+      subtitle: 'نحو الإصلاح الأخلاقي',
+      text: 'أمثلة: الغش في الامتحانات، الرشوة، استغلال النفوذ، نشر الأكاذيب.
+الحلول: تعزيز التربية الأخلاقية، نشر الوعي عبر الإعلام، دعم الإيجابية، تطبيق القوانين الصارمة.'
+    },
+    {
+      id: 9,
+      title: 'خارطة الطريق نحو مجتمع أفضل',
+      subtitle: 'نهاية العرض ودعوة للتفاعل',
+      text: '1- نشر الثقافة الأخلاقية.
+2- دعم أدوار الأسرة والتعليم.
+3- تطبيق العدالة والشفافية.
+4- التقييم المستمر لقياس التطور الأخلاقي.'
+    }
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center p-6">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={slides[index].id}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl w-full bg-gray-950 rounded-2xl shadow-2xl overflow-hidden border border-gray-700 p-8"
+        >
+          <div>
+            <h1 className="text-3xl font-bold mb-2 text-indigo-400 text-center">{slides[index].title}</h1>
+            <h2 className="text-lg text-gray-300 mb-4 text-center">{slides[index].subtitle}</h2>
+            <p className="text-gray-400 leading-relaxed whitespace-pre-line text-right">{slides[index].text}</p>
+          </div>
+          <div className="flex justify-between mt-6">
+            <button onClick={() => setIndex((index - 1 + slides.length) % slides.length)} className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-indigo-600 transition">السابق</button>
+            <div className="text-sm text-gray-500 self-center">صفحة {index + 1} / {slides.length}</div>
+            <button onClick={() => setIndex((index + 1) % slides.length)} className="px-4 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-400 transition">التالي</button>
+          </div>
+          <div className="text-center text-gray-500 text-sm mt-6">Copyright © 2025 Zeyad El-Bahrawy | Website: MoralIntegrityHub.com</div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
