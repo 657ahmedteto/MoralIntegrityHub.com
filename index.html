@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teto — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --black:#07060a; --dark1:#0f0d14; --dark2:#16131f; --dark3:#1f1a2e;
+  --purple:#2d1f5e; --violet:#4a2d9e; --gold:#c49a3c; --gold2:#e0b84a;
+  --gold3:#f5d97a; --cream:#ede6d5; --text:#ccc4e0; --text2:#8878aa; --accent:#7c5cbf;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Cairo',sans-serif; background:var(--black); color:var(--text); overflow-x:hidden; }
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--dark1); }
+::-webkit-scrollbar-thumb { background:var(--violet); border-radius:2px; }
+
+nav {
+  position:fixed; top:0; width:100%; z-index:200;
+  padding:1.1rem 3.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(7,6,10,0.94); backdrop-filter:blur(16px);
+  border-bottom:0.5px solid rgba(124,92,191,0.15);
+}
+.nav-logo { font-family:'Tajawal',sans-serif; font-size:1.5rem; font-weight:900; color:var(--gold2); letter-spacing:3px; text-shadow:0 0 24px rgba(196,154,60,0.4); }
+.nav-logo span { color:var(--cream); opacity:0.5; font-size:0.85rem; font-weight:300; letter-spacing:1px; margin-right:0.5rem; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { color:var(--text2); text-decoration:none; font-size:0.88rem; transition:color 0.3s; }
+.nav-links a:hover { color:var(--gold2); }
+
+#hero {
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; padding:7rem 3.5rem 4rem; text-align:center;
+}
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 90% 70% at 50% 30%, rgba(74,45,158,0.22) 0%, rgba(45,31,94,0.1) 40%, transparent 70%); }
+.stars { position:absolute; inset:0; background-image: radial-gradient(1px 1px at 12% 18%,rgba(255,255,255,0.45) 0%,transparent 100%), radial-gradient(1px 1px at 38% 72%,rgba(255,255,255,0.25) 0%,transparent 100%), radial-gradient(1.5px 1.5px at 63% 14%,rgba(200,155,255,0.35) 0%,transparent 100%), radial-gradient(1px 1px at 82% 56%,rgba(255,255,255,0.2) 0%,transparent 100%), radial-gradient(1px 1px at 23% 87%,rgba(255,255,255,0.3) 0%,transparent 100%), radial-gradient(1.5px 1.5px at 91% 31%,rgba(200,155,255,0.28) 0%,transparent 100%), radial-gradient(1px 1px at 54% 44%,rgba(255,255,255,0.2) 0%,transparent 100%), radial-gradient(1px 1px at 73% 79%,rgba(255,255,255,0.22) 0%,transparent 100%); }
+.orb { position:absolute; border-radius:50%; filter:blur(90px); animation:floatOrb 7s ease-in-out infinite; }
+.orb1 { width:500px; height:500px; top:-150px; right:-100px; background:radial-gradient(circle,rgba(74,45,158,0.28) 0%,transparent 70%); }
+.orb2 { width:400px; height:400px; bottom:-100px; left:-80px; background:radial-gradient(circle,rgba(45,31,94,0.22) 0%,transparent 70%); animation-delay:3.5s; }
+@keyframes floatOrb { 0%,100%{transform:translateY(0) scale(1);} 50%{transform:translateY(-25px) scale(1.05);} }
+
+.hero-c { position:relative; z-index:2; max-width:750px; }
+.eyebrow {
+  display:inline-flex; align-items:center; gap:0.7rem;
+  padding:0.4rem 1.2rem; border:1px solid rgba(124,92,191,0.3); border-radius:50px;
+  font-size:0.78rem; color:var(--accent); letter-spacing:3px;
+  background:rgba(124,92,191,0.06); margin-bottom:2rem;
+  animation:riseUp 0.9s ease both;
+}
+.edot { width:6px; height:6px; border-radius:50%; background:var(--gold2); animation:blink 2s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero-name {
+  font-family:'Tajawal',sans-serif; font-size:clamp(3.5rem,8vw,6.5rem); font-weight:900;
+  color:var(--cream); line-height:1; letter-spacing:6px; margin-bottom:1rem;
+  animation:riseUp 0.9s ease 0.15s both; text-shadow:0 0 60px rgba(124,92,191,0.3);
+}
+.hero-name em { font-style:normal; color:var(--gold2); text-shadow:0 0 40px rgba(196,154,60,0.5); }
+.hero-role { font-size:1rem; color:var(--text2); letter-spacing:2px; margin-bottom:1.8rem; animation:riseUp 0.9s ease 0.3s both; }
+.hero-desc { font-size:1.05rem; color:var(--text2); line-height:1.9; max-width:520px; margin:0 auto 3rem; animation:riseUp 0.9s ease 0.45s both; }
+.hero-btn {
+  display:inline-flex; align-items:center; gap:0.8rem;
+  padding:0.9rem 2.2rem; background:linear-gradient(135deg,var(--violet),var(--purple));
+  color:var(--gold3); border:1px solid rgba(124,92,191,0.5); border-radius:4px;
+  font-family:'Cairo',sans-serif; font-size:0.95rem; font-weight:700;
+  text-decoration:none; transition:all 0.4s; box-shadow:0 0 30px rgba(74,45,158,0.2);
+  animation:riseUp 0.9s ease 0.6s both;
+}
+.hero-btn:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(74,45,158,0.4); }
+@keyframes riseUp { from{opacity:0;transform:translateY(35px);} to{opacity:1;transform:translateY(0);} }
+
+section { padding:6rem 3.5rem; }
+.stag { display:inline-block; font-size:0.72rem; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:0.7rem; }
+.stitle { font-family:'Tajawal',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:900; color:var(--cream); margin-bottom:0.8rem; line-height:1.3; }
+.stitle em { font-style:normal; color:var(--gold2); }
+.sline { width:50px; height:2px; background:linear-gradient(to left,var(--gold),transparent); margin-bottom:1.5rem; }
+
+#projects { background:var(--dark1); }
+.proj-head { text-align:center; margin-bottom:5rem; }
+.proj-head .sline { margin:0 auto 1.5rem; }
+
+.pblock {
+  max-width:1150px; margin:0 auto 7rem;
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+  opacity:0; transform:translateY(40px); transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.pblock.visible { opacity:1; transform:translateY(0); }
+.pblock.flip .preview { order:-1; }
+.pblock:last-child { margin-bottom:0; }
+
+.preview { position:relative; }
+.bframe {
+  background:var(--dark2); border:1px solid rgba(124,92,191,0.2); border-radius:12px;
+  overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(124,92,191,0.08);
+  transition:transform 0.5s ease,box-shadow 0.5s ease;
+}
+.bframe:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 40px 100px rgba(0,0,0,0.6),0 0 60px rgba(74,45,158,0.15); }
+.bbar { background:var(--dark3); padding:0.7rem 1rem; display:flex; align-items:center; gap:0.6rem; border-bottom:1px solid rgba(124,92,191,0.1); }
+.d { width:10px; height:10px; border-radius:50%; }
+.dr{background:#ff5f57;} .dy{background:#febc2e;} .dg{background:#28c840;}
+.burl { flex:1; background:rgba(255,255,255,0.04); border-radius:4px; padding:0.25rem 0.8rem; font-size:0.72rem; color:var(--text2); font-family:monospace; margin-right:0.5rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.twrap { width:100%; aspect-ratio:16/10; overflow:hidden; position:relative; }
+.twrap.tall { aspect-ratio:10/14; max-height:420px; }
+.sif { width:200%; height:200%; transform:scale(0.5); transform-origin:top right; border:none; pointer-events:none; display:block; }
+
+.pinfo {}
+.pnum { font-family:'Tajawal',sans-serif; font-size:4rem; font-weight:900; color:rgba(124,92,191,0.1); line-height:1; margin-bottom:-1rem; user-select:none; }
+.ptags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
+.ptag { font-size:0.72rem; padding:0.25rem 0.8rem; border-radius:50px; border:1px solid rgba(124,92,191,0.3); color:var(--accent); background:rgba(124,92,191,0.06); letter-spacing:1px; }
+.ptitle { font-family:'Tajawal',sans-serif; font-size:1.7rem; font-weight:900; color:var(--cream); margin-bottom:1rem; line-height:1.3; }
+.ptitle em { font-style:normal; color:var(--gold2); }
+.pstory { font-size:0.95rem; color:var(--text2); line-height:2; margin-bottom:1.5rem; }
+.pstory strong { color:var(--text); font-weight:600; }
+
+.drows { margin-bottom:1.8rem; }
+.drow { display:flex; align-items:flex-start; gap:0.8rem; padding:0.7rem 0; border-bottom:0.5px solid rgba(124,92,191,0.08); }
+.drow:last-child { border-bottom:none; }
+.dico { font-size:1rem; margin-top:2px; flex-shrink:0; }
+.dtxt { font-size:0.88rem; color:var(--text2); line-height:1.6; }
+.dtxt strong { color:var(--text); display:block; font-size:0.8rem; margin-bottom:0.15rem; }
+
+.plink {
+  display:inline-flex; align-items:center; gap:0.6rem;
+  padding:0.75rem 1.8rem; border:1px solid rgba(124,92,191,0.4); border-radius:4px;
+  color:var(--gold2); text-decoration:none; font-size:0.88rem; font-weight:600;
+  transition:all 0.3s; background:rgba(74,45,158,0.08);
+}
+.plink:hover { background:rgba(74,45,158,0.2); border-color:rgba(124,92,191,0.7); transform:translateX(-3px); }
+
+.divider { width:100%; height:1px; background:linear-gradient(to left,transparent,rgba(124,92,191,0.18),transparent); margin:1rem 0; }
+
+#skills { background:var(--black); }
+.sgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.2rem; max-width:1000px; margin:0 auto; }
+.scard {
+  padding:1.8rem; background:rgba(124,92,191,0.04); border:0.5px solid rgba(124,92,191,0.12);
+  border-radius:10px; opacity:0; transform:translateY(20px);
+  transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s,border-color 0.3s;
+}
+.scard.visible { opacity:1; transform:translateY(0); }
+.scard:hover { background:rgba(124,92,191,0.09); border-color:rgba(124,92,191,0.3); }
+.sico { font-size:1.8rem; margin-bottom:0.8rem; }
+.sname { font-family:'Tajawal',sans-serif; font-size:1rem; font-weight:700; color:var(--cream); margin-bottom:0.4rem; }
+.sdesc { font-size:0.82rem; color:var(--text2); line-height:1.7; }
+
+#contact { background:var(--dark1); text-align:center; position:relative; overflow:hidden; }
+#contact::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(74,45,158,0.14) 0%,transparent 70%); }
+.cinner { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+.cinner .sline { margin:0 auto 2rem; }
+.cdesc { font-size:1rem; color:var(--text2); line-height:1.9; margin-bottom:2.5rem; }
+.cbtns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.bwa {
+  display:inline-flex; align-items:center; gap:0.7rem;
+  padding:0.9rem 2rem; background:linear-gradient(135deg,#1a5c2e,#128c3e);
+  color:#fff; border:none; border-radius:4px; font-family:'Cairo',sans-serif;
+  font-size:0.95rem; font-weight:700; text-decoration:none; cursor:pointer;
+  transition:all 0.3s; box-shadow:0 4px 25px rgba(18,140,62,0.2);
+}
+.bwa:hover { transform:translateY(-2px); box-shadow:0 8px 35px rgba(18,140,62,0.35); }
+.bghost {
+  display:inline-flex; align-items:center; gap:0.7rem;
+  padding:0.9rem 2rem; border:1px solid rgba(124,92,191,0.4);
+  color:var(--gold2); border-radius:4px; font-family:'Cairo',sans-serif;
+  font-size:0.95rem; font-weight:600; text-decoration:none;
+  transition:all 0.3s; background:rgba(74,45,158,0.06);
+}
+.bghost:hover { background:rgba(74,45,158,0.18); border-color:rgba(124,92,191,0.7); transform:translateY(-2px); }
+
+footer { padding:2rem 3.5rem; background:var(--black); border-top:0.5px solid rgba(124,92,191,0.1); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.flogo { font-family:'Tajawal',sans-serif; font-size:1.2rem; font-weight:900; color:var(--gold); }
+.fcopy { font-size:0.82rem; color:var(--text2); }
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+  section{padding:4rem 1.5rem;} #hero{padding:6rem 1.5rem 4rem;}
+  .pblock{grid-template-columns:1fr; gap:2.5rem;}
+  .pblock.flip .preview{order:0;}
+  footer{padding:1.5rem; flex-direction:column; text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">TETO <span>portfolio</span></div>
+  <ul class="nav-links">
+    <li><a href="#projects">المشاريع</a></li>
+    <li><a href="#skills">مهاراتي</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="stars"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-c">
+    <div class="eyebrow"><span class="edot"></span>مصمم ومطور مواقع</div>
+    <h1 class="hero-name">TETO<em>.</em></h1>
+    <p class="hero-role">Creative Designer &amp; Web Developer</p>
+    <p class="hero-desc">بصمم تجارب رقمية تفرق. كل مشروع من مشاريعي بيبدأ من سؤال واحد — إزاي أخلي الناس تحس بحاجة لما تشوفه؟</p>
+    <a href="#projects" class="hero-btn">اكتشف أعمالي ←</a>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="proj-head">
+    <div class="stag">أعمالي</div>
+    <h2 class="stitle">مشاريع <em>بتفرق</em></h2>
+    <div class="sline"></div>
+    <p style="color:var(--text2);font-size:0.95rem;max-width:500px;margin:0 auto;line-height:1.9;">كل مشروع جوه ده بيحكي قصة مختلفة — من الفكرة الأولى لحد ما المستخدم يفتح الصفحة ويبتسم.</p>
+  </div>
+
+  <!-- 01 tetocea -->
+  <div class="pblock" id="p1">
+    <div class="preview">
+      <div class="bframe">
+        <div class="bbar"><span class="d dr"></span><span class="d dy"></span><span class="d dg"></span><div class="burl">tetocea.netlify.app</div></div>
+        <div class="twrap"><iframe class="sif" src="https://tetocea.netlify.app/" title="Teto CEA" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+      </div>
+    </div>
+    <div class="pinfo">
+      <div class="pnum">01</div>
+      <div class="ptags"><span class="ptag">Agency Website</span><span class="ptag">Branding</span><span class="ptag">English</span></div>
+      <h3 class="ptitle">Teto Creative <em>Agency</em></h3>
+      <p class="pstory">ده الموقع الرسمي للوكالة. <strong>الهدف كان واضح</strong> — أعمل موقع يبيع من غير ما يصرخ. تصميم يخلي العميل يحس إن الوكالة دي تعرف شغلها من أول لحظة يدخل فيها. اشتغلت على إنه يكون إنجليزي لأنه بيستهدف سوق أوسع، ومع ذلك يفضل في حته منه روح عربية في الـ feel.</p>
+      <div class="drows">
+        <div class="drow"><span class="dico">🎨</span><div class="dtxt"><strong>الألوان والهوية</strong>داكن كامل — أسود عميق مع ذهبي دافئ كـ accent. الذهب هنا مش مجرد لون، ده رمز للقيمة والجودة اللي الوكالة بتقدمها.</div></div>
+        <div class="drow"><span class="dico">📐</span><div class="dtxt"><strong>التخطيط والـ Layout</strong>Full-screen sections مع whitespace واسع يخلي المحتوى يتنفس. مفيش ازدحام — كل element عنده مكانه.</div></div>
+        <div class="drow"><span class="dico">✍️</span><div class="dtxt"><strong>الـ Typography</strong>خط حديث bold للعناوين بيجذب العين فوراً، مع body text مريح للقراءة. الـ hierarchy واضحة من أول نظرة.</div></div>
+        <div class="drow"><span class="dico">⚡</span><div class="dtxt"><strong>التجربة والـ UX</strong>Navigation بسيطة، CTA واضح في كل section، والإحصائيات بتبني ثقة فورية عند الزائر.</div></div>
+      </div>
+      <a href="https://tetocea.netlify.app/" target="_blank" class="plink">زور الموقع ↗</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 screenads -->
+  <div class="pblock flip" id="p2">
+    <div class="pinfo">
+      <div class="pnum">02</div>
+      <div class="ptags"><span class="ptag">Landing Page</span><span class="ptag">Advertising</span><span class="ptag">عربي</span></div>
+      <h3 class="ptitle">Screen <em>Ads</em></h3>
+      <p class="pstory">موقع لشركة إعلانات شاشات — <strong>الشغل هنا كان تحدي حقيقي</strong>. إزاي تبيع خدمة "إعلانات شاشات" أونلاين لحد معرفش الشركة قبل كده؟ الجواب: خليه يحس بالضخامة من أول ثانية. صممت landing page بتقول كل حاجة في أقل وقت ممكن.</p>
+      <div class="drows">
+        <div class="drow"><span class="dico">🎨</span><div class="dtxt"><strong>الألوان والأجواء</strong>تصميم داكن بـ gradient أزرق-أخضر يحاكي الشاشات المضيئة الليلية. اللون نفسه بيقول للزائر "إنت في مكان تقني ومحترف".</div></div>
+        <div class="drow"><span class="dico">💰</span><div class="dtxt"><strong>جدول الأسعار</strong>صممت الجدول يكون أكتر section بيلفت النظر — واضح، مرتب، وفيه highlight لأكتر باقة بتتباع. ده بيساعد في الـ conversion بشكل مباشر.</div></div>
+        <div class="drow"><span class="dico">📊</span><div class="dtxt"><strong>الإحصائيات المتحركة</strong>أرقام بتتحرك لما الصفحة تتحمّل — ده بيخلي الزائر يوقف ويبص. نفسية بسيطة بس بتشتغل كويس جداً.</div></div>
+        <div class="drow"><span class="dico">📝</span><div class="dtxt"><strong>فورم التواصل</strong>بسيط ومباشر — اسم، تليفون، مدة الإعلان، وبس. مفيش friction يخلي الزائر يتردد.</div></div>
+      </div>
+      <a href="https://screenads22.netlify.app/" target="_blank" class="plink">زور الموقع ↗</a>
+    </div>
+    <div class="preview">
+      <div class="bframe">
+        <div class="bbar"><span class="d dr"></span><span class="d dy"></span><span class="d dg"></span><div class="burl">screenads22.netlify.app</div></div>
+        <div class="twrap"><iframe class="sif" src="https://screenads22.netlify.app/" title="Screen Ads" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 student dashboard -->
+  <div class="pblock" id="p3">
+    <div class="preview">
+      <div class="bframe">
+        <div class="bbar"><span class="d dr"></span><span class="d dy"></span><span class="d dg"></span><div class="burl">studeshboard.netlify.app</div></div>
+        <div class="twrap"><iframe class="sif" src="https://studeshboard.netlify.app/" title="Student Dashboard" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+      </div>
+    </div>
+    <div class="pinfo">
+      <div class="pnum">03</div>
+      <div class="ptags"><span class="ptag">Web App</span><span class="ptag">Dashboard</span><span class="ptag">عربي</span></div>
+      <h3 class="ptitle">لوحة الطالب <em>الذكية</em></h3>
+      <p class="pstory">المشروع ده مختلف عن الباقي — مش موقع تسويقي، ده <strong>تطبيق ويب فعلي بيشتغل</strong>. بنيته علشان يحل مشكلة حقيقية: إزاي الطالب يتابع حضوره وتقديراته في مكان واحد منظم؟ التحدي الحقيقي كان في الـ UX — إزاي تخلي حاجة "جدية" زي تتبع الدراسة تبقى سهلة ومريحة.</p>
+      <div class="drows">
+        <div class="drow"><span class="dico">🗂️</span><div class="dtxt"><strong>هيكل البيانات والـ Logic</strong>المستخدم يضيف مواد، يسجل حضوره، يدخل درجاته — والنظام بيحسب كل حاجة تلقائياً. كل ده بـ JavaScript خالص بدون backend.</div></div>
+        <div class="drow"><span class="dico">📈</span><div class="dtxt"><strong>الـ Charts والإحصائيات</strong>رسوم بيانية بتوضح نسبة الحضور والغياب بصرياً — لأن الأرقام وحدها مش كفاية، الشكل المرئي بيخلي الطالب يفهم وضعه أسرع.</div></div>
+        <div class="drow"><span class="dico">🎨</span><div class="dtxt"><strong>التصميم والـ UI</strong>واجهة نظيفة وهادية — مش محتاجة تبهر، محتاجة تشتغل. ألوان محايدة مع إضاءات خضرا وحمرا تعبّر عن الحضور والغياب بديهياً.</div></div>
+        <div class="drow"><span class="dico">💾</span><div class="dtxt"><strong>LocalStorage</strong>البيانات بتتحفظ في المتصفح — يعني الطالب يقفل الصفحة ويرجع يلاقي كل حاجته موجودة. تجربة app حقيقية بدون سيرفر.</div></div>
+      </div>
+      <a href="https://studeshboard.netlify.app/" target="_blank" class="plink">زور الموقع ↗</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 teto identity -->
+  <div class="pblock flip" id="p4">
+    <div class="pinfo">
+      <div class="pnum">04</div>
+      <div class="ptags"><span class="ptag">Link in Bio</span><span class="ptag">Identity</span><span class="ptag">Branding</span></div>
+      <h3 class="ptitle">Teto <em>Identity</em></h3>
+      <p class="pstory">صفحة الـ Link in Bio الرسمية لـ Teto Creative. <strong>ده مش مجرد link tree</strong> — ده امتداد للهوية البصرية للوكالة في منصة واحدة صغيرة. كل لينك مصمم يعبر عن خدمة مختلفة، والصفحة بتبقى أول انطباع للناس اللي بتيجي من السوشيال ميديا.</p>
+      <div class="drows">
+        <div class="drow"><span class="dico">🔗</span><div class="dtxt"><strong>فكرة الـ Link in Bio</strong>بدل ما كل منصة تاخد الناس لمكان مختلف، خليت صفحة واحدة تجمع كل حاجة — Instagram، Facebook، الموقع الأساسي، والانضمام للفريق.</div></div>
+        <div class="drow"><span class="dico">🖤</span><div class="dtxt"><strong>الهوية البصرية</strong>نفس ألوان الوكالة — أسود مع ذهبي. الشعار المثلث الذهبي بيتكرر كعنصر هوية. الزائر يحس إنه في نفس المكان حتى لو جاي من منصة تانية.</div></div>
+        <div class="drow"><span class="dico">📱</span><div class="dtxt"><strong>Mobile First</strong>الصفحة دي أساساً بتتفتح على موبايل — ففصّلت كل حاجة فيها على شاشة صغيرة أول. النتيجة: UX نضيف وسريع على أي جهاز.</div></div>
+        <div class="drow"><span class="dico">✨</span><div class="dtxt"><strong>الـ Animations</strong>اللينكات بتظهر بـ staggered animation لطيفة — مش بتبهر، بس بتحسس الصفحة إنها حية ومتقنة ومش عشوائية.</div></div>
+      </div>
+      <a href="https://teto-identity.netlify.app/" target="_blank" class="plink">زور الموقع ↗</a>
+    </div>
+    <div class="preview">
+      <div class="bframe">
+        <div class="bbar"><span class="d dr"></span><span class="d dy"></span><span class="d dg"></span><div class="burl">teto-identity.netlify.app</div></div>
+        <div class="twrap tall"><iframe class="sif" src="https://teto-identity.netlify.app/" title="Teto Identity" loading="lazy" sandbox="allow-scripts allow-same-origin" style="width:200%;height:200%;transform:scale(0.5);transform-origin:top right;border:none;pointer-events:none;display:block;"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="skills">
+  <div style="text-align:center;margin-bottom:3rem;">
+    <div class="stag">مهاراتي</div>
+    <h2 class="stitle">بشتغل <em>بإيه؟</em></h2>
+    <div class="sline" style="margin:0 auto 1.5rem;"></div>
+  </div>
+  <div class="sgrid">
+    <div class="scard"><div class="sico">🎨</div><div class="sname">UI / UX Design</div><div class="sdesc">بصمم واجهات بتخدم المستخدم مش بس تبهره — من الـ wireframe لحد الـ final design.</div></div>
+    <div class="scard"><div class="sico">💻</div><div class="sname">HTML / CSS / JS</div><div class="sdesc">بكتب كود نضيف ومنظم يترجم التصميم لواقع رقمي يشتغل على كل شاشة.</div></div>
+    <div class="scard"><div class="sico">✦</div><div class="sname">Brand Identity</div><div class="sdesc">بساعد البراندات تعرف هي مين وتقدر تعبر عن نفسها بصرياً بشكل متسق وقوي.</div></div>
+    <div class="scard"><div class="sico">📱</div><div class="sname">Responsive Design</div><div class="sdesc">كل حاجة بعملها بتبقى تمام على الموبايل، التابلت، والديسكتوب من غير compromise.</div></div>
+    <div class="scard"><div class="sico">⚡</div><div class="sname">Performance</div><div class="sdesc">مواقع سريعة التحميل، كود خفيف، وتجربة مستخدم مش فيها انتظار يزهّق.</div></div>
+    <div class="scard"><div class="sico">🎬</div><div class="sname">Motion & Animation</div><div class="sdesc">أنيميشن ناعم بيحيي الصفحة من غير ما يثقل عليها أو يشتت الزائر.</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cinner">
+    <div class="stag">تواصل</div>
+    <h2 class="stitle">خليك <em>تتكلم</em></h2>
+    <div class="sline"></div>
+    <p class="cdesc">عندك مشروع في دماغك؟ أو عايز تناقش فكرة؟ أو حتى بس تقول سلام؟ أنا هنا. ابعتلي على واتساب وهرد في أسرع وقت.</p>
+    <div class="cbtns">
+      <a href="https://wa.me/201006505921?text=مرحباً، شفت بورتفوليو تيتو وعايز أتكلم معاك" target="_blank" class="bwa">💬 واتساب</a>
+      <a href="https://tetocea.netlify.app/" target="_blank" class="bghost">🌐 الموقع الرسمي</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">TETO.</div>
+  <div class="fcopy">© 2026 Teto Creative — All rights reserved</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold:0.08, rootMargin:'0px 0px -60px 0px' });
+
+document.querySelectorAll('.pblock,.scard').forEach((el,i) => {
+  if(el.classList.contains('scard')) el.style.transitionDelay = (i%6)*0.08+'s';
+  obs.observe(el);
+});
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 60 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
+});
+</script>
+</body>
+</html>
